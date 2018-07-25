@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {Link} from 'react-router-dom';
+import routes from './routes';
 import './App.css';
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+    <nav className="nav">
+      <div> Elementsy </div>
+      <div className='link-wrap'>
+      <Link to = "/" className ='links'> Home </Link>
+      <Link to = "/cart" className='links'>Cart</Link>
       </div>
-    );
+    </nav> 
+    {routes}
+    </div>
+      
+    )
   }
 }
 

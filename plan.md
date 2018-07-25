@@ -70,15 +70,22 @@
 * Middleware 
     * ensureLoggedIn
 * Routes
-    * /api/products
+    * /api/listings
         * GET
+            * GET '/api/listings' returns all listings
+            * GET '/api/listings:userid' returns listings based on userID (JOIN) (in profile and on main page)
         * POST
+            * POST '/api/listing' post new listing
         * EDIT
+            * PUT ('/api/listing' edits posted listing
         * DELETE
+            * DELETE '/api/listing' deletes posted listing
         (can't patch something that isn't there)
     * /api/profile
         * GET
+            * GET '/api/profile:id' returns profile by id
         * EDIT
+            * PUT '/api/profile:id edits profile by id
 * Auth
     * Auth0
 * files
@@ -100,12 +107,13 @@
         * name
         * price
         * description
+        * userId (unique not null) - references user table
 * files
     * /db
      * init.sql
      * create_listing.sql
      * view_all_listings.sql
-     * view_user_listings.sql
+     * view_user_listings.sql (JOIN)
      * edit_listing.sql 
      * delete_listing.sql
      
@@ -117,14 +125,15 @@
 ## NPM Packages 
 
 * axios 
+* react-router-dom
+* dotenv
+
 * express - program in the back end with node
 * massive - connect server to database, allows full crud on back end 
 * body-parser - req.body
-* dotenv
 * express-session - setup express server 
 * redux
 * react-redux
-* react-router-dom
 
 ## Third Party
 
@@ -139,3 +148,15 @@
 * Chrome
     * DevTools
      * network tabs
+
+
+     MVP - simple e-commerce site with: 
+     some products available
+     user can add/edit own posts  
+     working cart
+
+Intended points: 
+    * Domain Registration  10pts
+    * Responsive design    20pts
+    * stripe               20pts
+    * 3 widgets
