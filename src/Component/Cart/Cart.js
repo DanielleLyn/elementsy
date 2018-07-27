@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Link, Switch, Route} from 'react-router-dom';
-import Home from '../Home/Home';
+// import {Link, Switch, Route} from 'react-router-dom';
+// import Home from '../Home/Home';
 
 
 export default class Cart extends Component {

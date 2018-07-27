@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter} from 'react-router-dom';
-import './index.css';
 import App from './App';
+import './index.css';
+import {HashRouter} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import Store from './ducks/store';
 
 
 ReactDOM.render(
+<Provider store = {Store}>
 <HashRouter>
-<App />
-</HashRouter>, document.getElementById('root'));
+    <App />
+</HashRouter>
+</Provider>
+, document.getElementById('root'));
 

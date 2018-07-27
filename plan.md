@@ -127,13 +127,13 @@
 * axios 
 * react-router-dom
 * dotenv
-
 * express - program in the back end with node
-* massive - connect server to database, allows full crud on back end 
 * body-parser - req.body
+* massive - connect server to database, allows full crud on back end 
 * express-session - setup express server 
 * redux
 * react-redux
+
 
 ## Third Party
 
