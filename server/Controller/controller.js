@@ -40,7 +40,22 @@ module.exports={
         dbInstance.delete_listing(id).then(() => {
             res.status(200).json({message: 'Listing Deleted!'});
         }).catch(err => console.log('error deleting house', err));
+    },
+
+    addToCart: (req,res) =>{
+    // const {id} = req.query;
+    req.session.cart.push(req.body)
+
+    console.log('===========================', req.session.cart)
+    res.end(); 
+    },
+
+    readCart: (req , res) => {
+        console.log('hit')
+        res.status(200).json(req.session.cart)
     }
+
+
 
 
 };

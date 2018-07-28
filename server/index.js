@@ -63,6 +63,7 @@ app.get('/auth/callback', (req, res) => {
           if (users.length){
             let user = users[0];
             req.session.user = user;
+            req.session.cart = ['hello'];
             res.redirect('/');
           } else {
             let createUserData = {
@@ -75,7 +76,8 @@ app.get('/auth/callback', (req, res) => {
                console.log('new user', newUsers)
               let user = newUsers[0];
               req.session.user = user;
-              res
+              req.session.cart = [];
+              res.redirect('/');
             })
           }
         })   
@@ -89,12 +91,14 @@ app.get('/auth/callback', (req, res) => {
   })
 
 
+
 app.get('/api/listings', c.listingRead);
 app.get('/api/user', c.read);
 app.post('/api/listing', c.createListing);
-app.put('/api/listing/:id', c.editListing)
-app.delete('/api/listings/:id', c.deleteListing)
-
+app.put('/api/listing/:id', c.editListing);
+app.delete('/api/listings/:id', c.deleteListing);
+app.post('/api/cart', c.addToCart);
+app.get('/api/cart', c.readCart);
 
 const path= require('path')
 app.get('*',(req,res) => {

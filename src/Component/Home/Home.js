@@ -49,6 +49,22 @@ export default class Home extends Component {
     }).catch(err => console.log('error editing listing', err));
 }
 
+  addListingToCart= (id,image,name,price,description,category) => {
+    let post = {
+      image: image,
+      name: name,
+      price: price,
+      description:description,
+      category:category,
+      id:id
+    }
+    console.log('post',post)
+    axios.post(`/api/cart`, post)
+
+    
+  }
+
+
   render() {
     console.log('user',this.state.user)
     // const{showMenu} = this.state;
@@ -56,7 +72,8 @@ export default class Home extends Component {
     
     const ViewAll = this.state.listings.map((listing, index) => {
       return <div key={listing.id}>
-        <Listing deleteListing ={this.deleteListing}{...listing}/>
+        <Listing deleteListing ={this.deleteListing}{...listing} addListingToCart={this.addListingToCart}/>
+
         </div>
     })
     console.log('view all', ViewAll);
