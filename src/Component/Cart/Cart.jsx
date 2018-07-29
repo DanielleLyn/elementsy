@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import {Link, Switch, Route} from 'react-router-dom';
 // import Home from '../Home/Home';
+import './Cart.css';
+import {Grid, Button, Modal, Jumbotron, ListGroupItem, ListGroup} from 'react-bootstrap';
 
 
 export default class Cart extends Component {
@@ -24,26 +26,28 @@ export default class Cart extends Component {
   render() {
     let ViewCart = this.state.cart.map((item,index) =>{
       return <div key={item.id}>
-                <div>{item.name}</div>
+              <h2>{item.name}</h2>
+                <img src={item.image} rounded />
+               <h3>{item.description}</h3>
+              <h4> {item.price}</h4>
+               {/* <h4>{item.category}</h4> */}
+               <h6>{item.user_id}</h6>
+             
+             
             </div>
       
     })
 
     return (
-      <div>
-        <nav>
-        
-        </nav>
-          <div className="cart">
-          <div>item list</div>
-          <div> item total </div>
-          <button> Checkout </button>
+<Grid>
+  <Jumbotron>
+          <div className='box'>
+          {ViewCart}
           </div>
-          <div>
-            {ViewCart}
-            </div>
-          
-      </div>
+
+  </Jumbotron>
+</Grid>
+    
     )
   }
 }

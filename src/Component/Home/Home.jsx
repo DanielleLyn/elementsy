@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import './Home.css';
 import Listing from '../Listing/Listing';
+import {Jumbotron, Grid, Row, Col, Image, Button} from 'react-bootstrap';
 
 
 export default class Home extends Component {
@@ -49,14 +50,16 @@ export default class Home extends Component {
     }).catch(err => console.log('error editing listing', err));
 }
 
-  addListingToCart= (id,image,name,price,description,category) => {
+  addListingToCart= (id,image,name,price,description,category,user_id) => {
     let post = {
       image: image,
       name: name,
       price: price,
       description:description,
       category:category,
-      id:id
+      id:id,
+      user_id:user_id
+      
     }
     console.log('post',post)
     axios.post(`/api/cart`, post)
@@ -78,24 +81,16 @@ export default class Home extends Component {
     })
     console.log('view all', ViewAll);
     return (
-      <div className = "main">
-      <nav>
-        {/* <button className="hamburger" onClick={() => this.setState({showMenu: !showMenu})}>Profile</button>
-        <div className = {showMenu ? "drawer" : "drawer open"}>
-        <Link to='/login'><div className='menuItem'>Login/Register</div></Link>
-        <Link to='/profile'><div className='menuItem'>Profile</div></Link>
-        <Link to='/add'><div className='menuItem'>Add Listing</div></Link> */}
-        {/* </div> */}
-        
-      </nav>
-
+      <Grid>
+        <Jumbotron>
+    
       <div className="box">
         {ViewAll}
       </div>
-      <div>
+    
+      </Jumbotron>
+      </Grid>
 
-      </div>
-      </div>
 
 
     );

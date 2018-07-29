@@ -1,9 +1,9 @@
 .app {
   text-align: center;
-  background-image: url("./Assets/Galaxy.jpg");
+  background-image: url("./Assets/Mountains.jpg");
 
 }
-.logo{
+/* .logo{
   font-family: cursive;
   font-style: oblique;
   font-size: 30px;
@@ -29,12 +29,12 @@
   color: blue;
   background: yellow;
   width: 150px;
-}
-
+} */
+/* 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
+} */
 
 .App-header {
   background-color: #222;
@@ -43,15 +43,15 @@
   color: white;
 }
 
-.App-title {
+/* .App-title {
   font-size: 1.5em;
-}
+} */
 
 .App-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+} */

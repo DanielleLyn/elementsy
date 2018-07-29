@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import {Jumbotron, Grid, Row, Col, Image, Button} from 'react-bootstrap';
 import routes from './routes';
 import './App.css';
+import Navbar from './Component/Navbar/CustomNavbar';
 
 import axios from 'axios';
 // import Home from './Component/Home/Home';
@@ -31,29 +33,34 @@ class App extends Component {
   render() {
     const{showMenu} = this.state;
     return (
-      
+      <grid>
+        <div>
+          <Navbar />
+          </div>
+
       <div className="app">
-    <nav className="nav">
-      <div className="logo"> Elementsy </div>
-      <div className='link-wrap'>
-      <Link to = "/" className ='links'> Home </Link>
+        {/* <nav className="nav">
+           <div className="logo"> Elementsy </div>
+         <div className='link-wrap'>
+         <Link to = "/" className ='links'> Home </Link>
       <Link to = "/cart" className='links'>Cart</Link>
       </div>
-    </nav> 
-    <div>
+    </nav>  */}
+    {/* <div>
     <button className="hamburger" onClick={() => this.setState({showMenu: !showMenu})}>Menu</button>
         <div className = {showMenu ? "drawer" : "drawer open"}>
         <Link to='/login'><div className='menuItem'>Login</div></Link>
         <Link to='/profile'><div className='menuItem'>Profile</div></Link>
         <Link to='/add'><div className='menuItem'>Add Listing</div></Link>
-      </div>
+      </div> */}
       <div>
        
     {routes}
       </div>
       
     </div>
-    </div>
+   
+    </grid>
       
     )
   }
