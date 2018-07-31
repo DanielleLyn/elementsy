@@ -53,6 +53,22 @@ module.exports={
     readCart: (req , res) => {
         console.log('hit')
         res.status(200).json(req.session.cart)
+    },
+
+
+    getListing: (req,res) => {
+        console.log('hello');
+        // console.log ('req means', req);
+        // console.log('res means', res);
+        console.log('req.params',req.params);
+         const db = req.app.get('db');
+        db.view_listing(req.params.id).then(response=>{
+            res.status(200).json(response);
+        })
+    },
+
+    getOne:(req,res) => {
+        res.status(200).json(card);
     }
 
 

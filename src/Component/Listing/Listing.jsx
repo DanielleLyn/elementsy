@@ -2,8 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Jumbotron,ListGroupItem, Grid, ListGroup,Row, Modal, Image,Well, Button} from 'react-bootstrap';
 import './Listing.css';
+
 export default function Listing(props){
-    
+    console.log('props', props);
     return(
         <Grid>
         <div>
@@ -22,7 +23,8 @@ export default function Listing(props){
                 {/* <h3>Category:{props.category}</h3> */}
                 <h6> Posted By User: {props.user_id} </h6>
                 </ListGroupItem>
-
+              
+                    <Button onClick= {()=> props.changeMenu()}>edit </Button>
                 <Button onClick={()=>props.deleteListing(props.id)}>delete</Button> 
            <Button onClick={() => props.addListingToCart(props.id,props.image,props.name,props.price,props.description,props.category)}>add to cart</Button>
           

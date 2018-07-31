@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {Jumbotron, Grid, Row, Col, Image, Button} from 'react-bootstrap';
+import {Jumbotron, Grid, Row, Col, Image, Button, Nav, NavItem} from 'react-bootstrap';
 import routes from './routes';
 import './App.css';
 import Navbar from './Component/Navbar/CustomNavbar';
 
 import axios from 'axios';
 // import Home from './Component/Home/Home';
-
 // import Listing from './Component/Listing/Listing';
 
 class App extends Component {
   constructor(){
     super();
     this.state={
-     showMenu: false,
+     
     }
   }
 
@@ -30,40 +29,39 @@ class App extends Component {
 
 
 
+
   render() {
     const{showMenu} = this.state;
     return (
-      <grid>
-        <div>
-          <Navbar />
-          </div>
-
-      <div className="app">
-        {/* <nav className="nav">
-           <div className="logo"> Elementsy </div>
-         <div className='link-wrap'>
-         <Link to = "/" className ='links'> Home </Link>
-      <Link to = "/cart" className='links'>Cart</Link>
-      </div>
-    </nav>  */}
-    {/* <div>
-    <button className="hamburger" onClick={() => this.setState({showMenu: !showMenu})}>Menu</button>
-        <div className = {showMenu ? "drawer" : "drawer open"}>
-        <Link to='/login'><div className='menuItem'>Login</div></Link>
-        <Link to='/profile'><div className='menuItem'>Profile</div></Link>
-        <Link to='/add'><div className='menuItem'>Add Listing</div></Link>
-      </div> */}
       <div>
-       
-    {routes}
+           <div>
+            <Navbar />
+          </div>
+ 
+      <div className="app">
+        <div>
+         {routes}
+         </div>
       </div>
-      
-    </div>
    
-    </grid>
+    </div>
       
     )
   }
 }
 
 export default App;
+
+// modal hidden by default
+// click "edit"
+// visit database and grab listing
+// populate modal with the listing's details
+// make modal appear
+// edit modal 
+// click save
+// update existing row in database with new values
+// refresh page 
+
+// Bonus:
+// make the modal header switch between add listing and edit listing 
+

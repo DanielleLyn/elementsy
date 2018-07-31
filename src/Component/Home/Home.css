@@ -1,7 +1,27 @@
+.appHome{
+    height: 1200px;
+}
 .logo{
     font-family: cursive;
     font-style: oblique;
     font-size: 30px;
+}
+.col1{
+
+    height:200px;
+}
+.col2{
+  
+    height: 200px;
+}
+
+.menu{
+    display:none;
+}
+
+.menuopen{
+    /* display:none; */
+    display:block;
 }
 
 /* .open{

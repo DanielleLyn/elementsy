@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import './Home.css';
 import Listing from '../Listing/Listing';
-import {Jumbotron, Grid, Row, Col, Image, Button} from 'react-bootstrap';
+import {Jumbotron, Grid, Row, Col, Image, Button, Modal} from 'react-bootstrap';
+import {AddModal} from '../AddModal/AddModal';
+import AddListing from '../AddListing/AddListing';
 
 
 export default class Home extends Component {
@@ -11,8 +13,10 @@ export default class Home extends Component {
     super(props);
 
     this.state={
-      // showMenu: false,
+      showMenu: false,
+
       listings: [], //this.props.listing
+      
     }
     this.deleteListing = this.deleteListing.bind(this);
   }
@@ -67,29 +71,73 @@ export default class Home extends Component {
     
   }
 
+  editListing(id){
+    console.log('id', id);
+  
+    axios.get(`/api/listing/${id}`)
+    .then(response => { 
+      console.log('.....response',response.data)
+      //need to set state 
+      this.setState({
+        itemName: response.data.name,
+        itemImage:response.data.image,
+        itemPrice:response.data.price,
+        ItemDescription:response.data.description,
+        itemCategory:response.data.category
+      })
+    })
+        
+  }
+
+  changeMenu=()=> {
+    this.setState({
+      showMenu: true
+  })
+}
+
+  cancelMenu= ()=> {
+    this.setState({
+      showMenu: false
+    })
+  }
 
   render() {
     console.log('user',this.state.user)
-    // const{showMenu} = this.state;
     console.log('listings----', this.state.listings);
-    
+    const{showMenu} = this.state;
+
     const ViewAll = this.state.listings.map((listing, index) => {
       return <div key={listing.id}>
-        <Listing deleteListing ={this.deleteListing}{...listing} addListingToCart={this.addListingToCart}/>
+        <Listing deleteListing ={this.deleteListing}{...listing} addListingToCart={this.addListingToCart} editListing={this.editListing} changeMenu={this.changeMenu} />
 
         </div>
     })
     console.log('view all', ViewAll);
     return (
-      <Grid>
-        <Jumbotron>
-    
-      <div className="box">
-        {ViewAll}
+    <Grid>
+      <div className='appHome'>
+        <Row className= 'row1'>
+          <Col className='col1' xs={12} md={12} lg={6} > 
+           tarot
+          </Col>
+          <Col className='col2' xs={12} md={12} lg={6} >
+            moon
+          </Col>
+        </Row>
+        <div className =  {showMenu ? "menuopen" : "menu"}>
+        <AddListing cancelMenu = {this.cancelMenu} />
+        </div>
+        <Row className='row2'>
+          <Col className='row2col2' lg={12}  >
+           <Jumbotron>
+           {ViewAll}
+           </Jumbotron>
+
+          </Col>
+        </Row>
+
       </div>
-    
-      </Jumbotron>
-      </Grid>
+    </Grid>
 
 
 

@@ -95,10 +95,18 @@ app.get('/auth/callback', (req, res) => {
 app.get('/api/listings', c.listingRead);
 app.get('/api/user', c.read);
 app.post('/api/listing', c.createListing);
+
+app.get('/api/listing/:id', c.getListing);
 app.put('/api/listing/:id', c.editListing);
+
 app.delete('/api/listings/:id', c.deleteListing);
 app.post('/api/cart', c.addToCart);
 app.get('/api/cart', c.readCart);
+
+app.get('/api/v1/cards/random', c.getOne);
+
+
+// app.get('/api/v1/cards/random'. c.randomTarot)
 
 const path= require('path')
 app.get('*',(req,res) => {
