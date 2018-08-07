@@ -1,0 +1,13 @@
+/* .tarotReading{
+    display: flex;
+    justify-content: center;
+} */
+.reading{
+    display:none;
+    /* display: block; */
+}
+
+.open{
+    /* display:none; */
+    display:block;
+}

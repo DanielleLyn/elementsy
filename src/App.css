@@ -1,7 +1,7 @@
 .app {
   text-align: center;
   background-image: url("./Assets/Mountains.jpg");
-  
+background-size: 100%;
 }
 
 .widgets{
@@ -14,7 +14,7 @@
 
 .tarotWidget{
   height: 100px;
-  background-color: red;
+  /* background-color: red; */
   width: 100px;
 }
 

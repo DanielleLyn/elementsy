@@ -1,11 +1,10 @@
 UPDATE listings
-SET id = ${idInput},
-image = ${imageInput},
-username = ${usernameInput},
-price = ${priceInput},
-description = ${descriptionInput},
-user_id = ${useridInput}
+SET name = ${name},
+image = ${image},
+price = ${price},
+description = ${description},
+category = ${category}
+WHERE id = ${id};
 
---WHERE id = ${id};
---SELECT * FROM listings
+SELECT * FROM listings
 

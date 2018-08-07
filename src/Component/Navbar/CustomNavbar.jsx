@@ -17,7 +17,7 @@ export default class CustomNavbar extends Component {
                 <Navbar.Collapse>
 
                     <Nav pullRight >
-                    <NavDropdown eventKey={1} title="Menu" id="Menu-dropdown" collapseOnSelect>
+                    <NavDropdown eventKey={1} title="Menu" id="Menu-dropdown" >
                         <MenuItem eventKey="2.1">
                             <Link to='/login'>Login/Profile</Link>
                         </MenuItem>

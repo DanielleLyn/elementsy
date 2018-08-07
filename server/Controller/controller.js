@@ -25,13 +25,15 @@ module.exports={
     },
 
     editListing: (req,res) => {
-        const {id} = req.params; //not sure what this is doing
-        const{image, name, price, description, category, user_id} = req.body
+        console.log(
+        'hit'
+        )
+        const {name, image, price, description, category, id} = req.body
         const dbInstance = req.app.get('db');
-        dbInstance.edit_listing(updatedListing) //not sure what this is doing
+        dbInstance.edit_listing({id, name, image, price, description, category,})
         .then(listing => {
             res.status(200).json({listing});
-        }).catch(err => console.log('Databases put errror', err));
+        }).catch(err => console.log('Databases put error', err));
     },
 
     deleteListing: (req,res) => {
@@ -39,14 +41,14 @@ module.exports={
         const dbInstance = req.app.get('db');
         dbInstance.delete_listing(id).then(() => {
             res.status(200).json({message: 'Listing Deleted!'});
-        }).catch(err => console.log('error deleting house', err));
+        }).catch(err => console.log('error deleting listing', err));
     },
 
     addToCart: (req,res) =>{
     // const {id} = req.query;
     req.session.cart.push(req.body)
 
-    console.log('===========================', req.session.cart)
+    // console.log('===========================', req.session.cart)
     res.end(); 
     },
 
@@ -57,9 +59,7 @@ module.exports={
 
 
     getListing: (req,res) => {
-        console.log('hello');
-        // console.log ('req means', req);
-        // console.log('res means', res);
+        // console.log('hello');
         console.log('req.params',req.params);
          const db = req.app.get('db');
         db.view_listing(req.params.id).then(response=>{
@@ -68,7 +68,16 @@ module.exports={
     },
 
     getOne:(req,res) => {
+        //read
         res.status(200).json(card);
+    }, 
+
+    userListing:(req,res) => {
+        console.log('userListing hit')
+        console.log('***params', req.params)
+        const db = req.app.get('db');
+        db.view_user_listings()
+        res.status(200).json(response);
     }
 
 

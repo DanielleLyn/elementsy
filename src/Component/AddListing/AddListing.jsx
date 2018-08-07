@@ -5,8 +5,8 @@ import {handleChange} from '../../ducks/reducer';
 import {connect} from 'react-redux';
 import{Modal, Button} from 'react-bootstrap';
 import './AddListing.css';
-import {AddModal} from '../AddModal/AddModal';
-import Listing from '../Listing/Listing';
+// import {AddModal} from '../AddModal/AddModal';
+// import Listing from '../Listing/Listing';
 
 class AddListing extends Component {
     constructor(){

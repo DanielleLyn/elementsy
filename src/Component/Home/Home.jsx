@@ -3,10 +3,12 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import './Home.css';
 import Listing from '../Listing/Listing';
-import {Jumbotron, Grid, Row, Col, Image, Button, Modal} from 'react-bootstrap';
-import {AddModal} from '../AddModal/AddModal';
-import AddListing from '../AddListing/AddListing';
-
+import {Jumbotron, Grid, Row, Col, Button} from 'react-bootstrap';
+// import {AddModal} from '../AddModal/AddModal';
+// import AddListing from '../AddListing/AddListing';
+// import {EditModal} from '../EditModal/EditModal';
+import Tarot from '../Tarot/Tarot';
+import ScrollUp from '../ScrollUp/ScrollUp';
 
 export default class Home extends Component {
   constructor(props){
@@ -14,6 +16,7 @@ export default class Home extends Component {
 
     this.state={
       showMenu: false,
+      showReading: false,
 
       listings: [], //this.props.listing
       
@@ -82,17 +85,27 @@ export default class Home extends Component {
         itemName: response.data.name,
         itemImage:response.data.image,
         itemPrice:response.data.price,
-        ItemDescription:response.data.description,
+        itemDescription:response.data.description,
         itemCategory:response.data.category
       })
     })
         
   }
 
-  changeMenu=()=> {
+  changeMenu=(id)=> {
+    let listingToEdit = this.state.listings.filter((listing) => {
+      return (
+      listing.id === id 
+      )
+    })
     this.setState({
       showMenu: true
-  })
+    })
+
+    
+   console.log(
+     'listing to edit', listingToEdit
+   )
 }
 
   cancelMenu= ()=> {
@@ -101,32 +114,49 @@ export default class Home extends Component {
     })
   }
 
+  changeReading = () => {
+    this.setState({
+      showReading: true
+    })
+  }
+
+  cancelReading = () =>{
+    console.log('hit');
+    this.setState({
+      showReading: false
+    })
+  }
+  
   render() {
-    console.log('user',this.state.user)
-    console.log('listings----', this.state.listings);
+
+    console.log('this.state.user',this.state.user)
+    // console.log('listings----', this.state.listings);
     const{showMenu} = this.state;
+    const{showReading}=this.state;
 
     const ViewAll = this.state.listings.map((listing, index) => {
       return <div key={listing.id}>
-        <Listing deleteListing ={this.deleteListing}{...listing} addListingToCart={this.addListingToCart} editListing={this.editListing} changeMenu={this.changeMenu} />
+        <Listing deleteListing ={this.deleteListing}{...listing} addListingToCart={this.addListingToCart} changeMenu={this.changeMenu} showMenu={this.state.showMenu} cancelMenu={this.cancelMenu} listingToEdit = {this.state.listingToEdit} />
 
         </div>
     })
-    console.log('view all', ViewAll);
+        
+    // console.log('view all', ViewAll);
     return (
-    <Grid>
+      <Grid>
       <div className='appHome'>
         <Row className= 'row1'>
           <Col className='col1' xs={12} md={12} lg={6} > 
-           tarot
+          <Button onClick={() => this.changeReading()} > Tarot Reading </Button>
+          {this.state.showReading ? <Tarot cancelReading ={this.cancelReading} /> : null}
+      {/* <Tarot cancelReading ={this.cancelReading} showReading ={this.state.showReading}/>   */}
+           {/* <Tarot /> */}
           </Col>
           <Col className='col2' xs={12} md={12} lg={6} >
             moon
           </Col>
         </Row>
-        <div className =  {showMenu ? "menuopen" : "menu"}>
-        <AddListing cancelMenu = {this.cancelMenu} />
-        </div>
+      
         <Row className='row2'>
           <Col className='row2col2' lg={12}  >
            <Jumbotron>
@@ -135,6 +165,10 @@ export default class Home extends Component {
 
           </Col>
         </Row>
+
+         <div className="footer">
+         <ScrollUp style={{width: 75}} ToggledStyle={{right: 100}}/>
+        </div>
 
       </div>
     </Grid>

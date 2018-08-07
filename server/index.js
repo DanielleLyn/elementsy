@@ -90,10 +90,10 @@ app.get('/auth/callback', (req, res) => {
     .catch(err =>  console.log(err))      
   })
 
-
+ app.get('/api/user', c.read);
+ app.get('/api/userListing', c.userListing)
 
 app.get('/api/listings', c.listingRead);
-app.get('/api/user', c.read);
 app.post('/api/listing', c.createListing);
 
 app.get('/api/listing/:id', c.getListing);
@@ -103,7 +103,13 @@ app.delete('/api/listings/:id', c.deleteListing);
 app.post('/api/cart', c.addToCart);
 app.get('/api/cart', c.readCart);
 
-app.get('/api/v1/cards/random', c.getOne);
+app.get('/api/userdata', (req,res) => {
+  if (req.session.user) {
+    res.send(req.session.user)
+  }
+})
+
+// app.get('/api/v1/cards/random', c.getOne);
 
 
 // app.get('/api/v1/cards/random'. c.randomTarot)
