@@ -1,6 +1,6 @@
 .app {
   text-align: center;
-  background-image: url("./Assets/Mountains.jpg");
+  background-image: url("./Assets/afterglow.jpg");
 background-size: 100%;
 }
 
@@ -24,38 +24,7 @@ background-size: 100%;
   width: 100px;
 }
 
-/* .logo{
-  font-family: cursive;
-  font-style: oblique;
-  font-size: 30px;
-}
 
-.open{
-  transform: translate(-150px,0px);
-  top: 50px;
-  height: 50px;
-  padding: 0px;
-  width: 30px;
-  transition: 1s;
-
-}
-.drawer{
-  transform: translate (0px, 0px);
-  background: blue;
-  transition: 1s;
-  width: 150px;
-}
-
-.menuItem{
-  color: blue;
-  background: yellow;
-  width: 150px;
-} */
-/* 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-} */
 
 .App-header {
   background-color: #222;
@@ -64,15 +33,8 @@ background-size: 100%;
   color: white;
 }
 
-/* .App-title {
-  font-size: 1.5em;
-} */
+
 
 .App-intro {
   font-size: large;
 }
-
-/* @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */

@@ -17,28 +17,26 @@ export default class CustomNavbar extends Component {
                 <Navbar.Collapse>
 
                     <Nav pullRight >
-                    <NavDropdown eventKey={1} title="Menu" id="Menu-dropdown" >
-                        <MenuItem eventKey="2.1">
+                    <NavDropdown className='menuItem2' eventKey={1} title="Menu" id="Menu-dropdown" >
+                        <MenuItem componentClass='span' eventKey="2.1">
                             <Link to='/login'>Login/Profile</Link>
                         </MenuItem>
                         {/* <MenuItem eventKey="2.2">
                             <Link to='/profile'>Profile</Link> */}
                         {/* </MenuItem> */}
-                        <MenuItem eventKey="2.3">
+                        <MenuItem componentClass='span' eventKey="2.3">
                             <Link to='/add'>AddListing</Link>
                         </MenuItem>
                     </NavDropdown>
 
-                     <NavItem eventKey={2}>
+                     <NavItem eventKey={2}> 
                         <Link to='/'> Home </Link>
                     </NavItem>
+                    {/* className='menuItem' componentClass='span' */}
 
-                    <NavItem eventKey={3}>
+                    <NavItem  eventKey={3}> 
                         <Link to='/Cart/'> Cart </Link>
                     </NavItem>
-
-
-
 
 
                     </Nav>

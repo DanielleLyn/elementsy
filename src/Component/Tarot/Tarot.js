@@ -10,7 +10,7 @@ export default class Tarot extends Component {
         this.state = {
             card: [],
             myCard:[],
-            isLoaded:false,
+           
             // cards:[],
 
 
@@ -23,7 +23,6 @@ export default class Tarot extends Component {
             axios.get('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1').then(res => {
                 console.log('******res.data', res)
                 this.setState({
-                    isLoaded:true,
                     myCard: res.data.card,
                 });
             });
@@ -44,7 +43,7 @@ export default class Tarot extends Component {
        
     render() {
         const oneCard = this.state.myCard
-        const isLoaded = this.state
+        // const isLoaded = this.state
         console.log('props', this.props)
         console.log('one card******', oneCard);
         

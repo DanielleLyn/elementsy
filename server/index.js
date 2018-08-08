@@ -91,7 +91,7 @@ app.get('/auth/callback', (req, res) => {
   })
 
  app.get('/api/user', c.read);
- app.get('/api/userListing', c.userListing)
+ app.get('/api/userListing/:id', c.userListing)
 
 app.get('/api/listings', c.listingRead);
 app.post('/api/listing', c.createListing);

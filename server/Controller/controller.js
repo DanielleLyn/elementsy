@@ -74,13 +74,15 @@ module.exports={
 
     userListing:(req,res) => {
         console.log('userListing hit')
-        console.log('***params', req.params)
+        
         const db = req.app.get('db');
-        db.view_user_listings()
-        res.status(200).json(response);
+        db.listing_user_join(req.params.id).then(listing => {
+            console.log('listing', listing)
+            res.status(200).json({listing});
+            
+        })
+
     }
-
-
 
 
 };

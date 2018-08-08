@@ -8,13 +8,13 @@ import AddListing from './Component/AddListing/AddListing';
 
 const routes = (
     <Switch>
-        <div>
+        
         <Route exact path = '/' component = {Home} />
         <Route path="/login" component = {Login} />
         <Route path="/cart" component = {Cart} />
         <Route path="/profile" component = {Profile} />
         <Route path="/add" component = {AddListing} />
-        </div>
+    
     </Switch>
     
 

@@ -27,7 +27,7 @@ export default class Cart extends Component {
     let ViewCart = this.state.cart.map((item,index) =>{
       return <div key={item.id}>
               <h2>{item.name}</h2>
-                <img src={item.image} alt= 'cart item' rounded />
+                <img src={item.image}  rounded />
                <h3>{item.description}</h3>
               <h4> {item.price}</h4>
                <h6>{item.category}</h6>

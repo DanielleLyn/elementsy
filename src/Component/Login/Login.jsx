@@ -13,25 +13,23 @@ export default class Login extends Component {
     this.state = {
     
       username: '',
-      userListings: '',
+      userListings: [],
+      id: '',
       
     }
   }
   componentDidMount(){
       axios.get('/api/userdata').then(response => {
           console.log('response', response);
-          this.setState({
+          axios.get(`/api/userListing/${response.data.id}`).then(response2 => { 
+            console.log('userListing.....response', response2.data)
+            this.setState({
             username: response.data.username,
-            id: response.data.id
+            userListings: response2.data.listing
+            })
           })
       })
 
-      axios.get('/api/userListing').then(response => { //need to pass this down through props 
-        console.log('.....response',response.data)
-        this.setState({
-          userListings: response.data
-        })
-      })
   }
 
   login = () => {
@@ -40,7 +38,18 @@ export default class Login extends Component {
   }
 
     render(){
-        console.log('---state', this.state);
+        // console.log('---state', this.state);
+        
+        const userListings = this.state.userListings.map((listing, index) => {
+            return <div key={listing.id}>
+                <h1> Product Name: {listing.name} </h1>
+                <img src={listing.image} alt='listing item' className='listing_image'  />
+                <h4>Price:$ {listing.price} </h4>
+                <h4>description: {listing.description || 'unlisted'} </h4>
+                <h4>category: {listing.category || 'unlisted' } </h4>
+           </div>
+        } )
+
     return(
         <div className='LoginApp'>
            <div className='loginBody'>
@@ -56,8 +65,8 @@ export default class Login extends Component {
                 <Modal.Header>
                     <h1>{ this.state.username || 'Please Log In'}</h1>
                 </Modal.Header>
-                <Modal.Body><h3> My Listings</h3> </Modal.Body>
-                <Modal.Body> (listings)</Modal.Body>
+                <Modal.Body><h3>  My Listings </h3> </Modal.Body>
+                <Modal.Body> {userListings || 'Please log in to view listings'}</Modal.Body>
                 <Modal.Footer>
                     <Button><Link to='/add'> Add New Listing</Link></Button>
                     <Button>Log Out </Button>

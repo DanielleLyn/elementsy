@@ -7,9 +7,10 @@ import{Modal, Button} from 'react-bootstrap';
 
 
 
+
 class EditModal extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
         //   listingToEdit:{},
           name: '',
@@ -24,11 +25,12 @@ class EditModal extends Component {
           updatedCategory: '',            
             
         }
+        // console.log('***props', this.props)
     }
 
     updateListing(id, name, image, price, description, category){
         console.log('stats', id, name, image, price, description, category, )
-        
+        console.log('props', this.props.listing)
         let updatedItem = {
             id: id || this.props.listing.id,
             name: name || this.props.listing.name,
@@ -38,6 +40,7 @@ class EditModal extends Component {
             category: category || this.props.listing.category
             
         }
+
         console.log('****updated item', updatedItem)
         axios.put(`/api/listing/${id}`, updatedItem).then(res => {
             this.setState({
@@ -57,14 +60,22 @@ class EditModal extends Component {
             [key]:value
         })
     }
-    
+
+    cancelClicked =() => {
+        this.setState({
+            updatedName:'',
+            updatedImage: '',
+            updatedPrice: '',
+            updatedDescription: '',
+            updatedCategory: '', 
+        })
+    }
 
     
     render(){
-        // console.log('------updated name', this.state.updatedName)
-        // console.log('*** updated image', this.state.updatedImage)
-        // const {dispatch} = this.props;
+    
         // console.log('*** user data', user.data)
+        // console.log('listing', this.props.listing)
         return(
             <div>
          <div className='EditListing-modal'>
@@ -75,20 +86,23 @@ class EditModal extends Component {
 
                 <Modal.Body>
                 <p>Item Name</p>
-                <input name='updatedName' type="text" onChange={(e) => this.changeHandler(e.target.name, e.target.value)} placeholder={this.props.listing.name || "name"} value={this.state.updatedName}/>
+                <input name='updatedName' type="text" onChange={(e) => this.changeHandler(e.target.name, e.target.value)} placeholder={this.props.listing.name || "name"} value={this.state.updatedName || this.props.listing.name}/>
                 <p>Image</p>
-                <input name='updatedImage' type="text" onChange={(e) => this.changeHandler(e.target.image, e.target.value)} placeholder={this.props.listing.image || "image"} value={this.state.updatedImage} />
+                <input name='updatedImage' type="text" onChange={(e) => this.changeHandler(e.target.name, e.target.value)} placeholder={this.props.listing.image || "image"} value={this.props.listing.image} />
                 <p>Price</p>
-                <input name='updatedPrice' type='text' onChange = {(e) => this.changeHandler(e.target.price, e.target.value)} placeholder ={this.props.listing.price || "price"} value={this.state.updatedPrice}  />
+                <input name='updatedPrice' type='text' onChange = {(e) => this.changeHandler(e.target.name, e.target.value)} placeholder ={this.props.listing.price || "price"} value={this.props.listing.price}  />
                 <p>Description</p>
-                <input name='updatedDescription' type='text' onChange={(e) => this.changeHandler(e.target.description, e.target.value)}placeholder={this.props.listing.description || "description"} value={this.state.updatedDescription} />
+                <input name='updatedDescription' type='text' onChange={(e) => this.changeHandler(e.target.name, e.target.value)}placeholder={this.props.listing.description || "description"} value={this.props.listing.description} />
                 <p>Category</p>
-                <input name ='updatedCategory' type='text' onChange={(e) => this.changeHandler(e.target.category, e.target.value)} placeholder={this.props.listing.category || "category" } value={this.state.updatedCategory} />
+                <input name ='updatedCategory' type='text' onChange={(e) => this.changeHandler(e.target.name, e.target.value)} placeholder={this.props.listing.category || "category" } value={this.props.listing.category} />
                 
                 </Modal.Body>
                 <Modal.Footer>
                 <Button bsStyle="primary" onClick= {() => this.updateListing(this.props.listing.id, this.state.updatedName, this.state.updatedImage, this.state.updatedPrice, this.state.updatedDescription, this.state.updatedCategory)} ><Link to='/'> Update Listing </Link></Button> 
-                <Button onClick={this.props.cancelMenu}>Cancel</Button> 
+                <Button onClick={() => {
+                    this.props.cancelMenu()
+                    this.cancelClicked()
+                    }}>Cancel</Button> 
                 </Modal.Footer>
                 
                 
@@ -105,32 +119,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(EditModal);
-
-{/* <div className='EditListing-modal'>
-            <Modal.Dialog>
-                <Modal.Header>
-                    <Modal.Title>Edit Listing</Modal.Title>
-                </Modal.Header>
-
-                <Modal.Body>
-                <p>Item Name</p>
-                <input type="text" placeholder={this.props.listing.name || "name"} onChange={(e) => dispatch(handleChange('name', e.target.value))} />
-                <p>Image</p>
-                <input type="text" placeholder={this.props.listing.image || "image"} onChange={(e) => dispatch(handleChange('image', e.target.value))} />
-                <p>Price</p>
-                <input type='text' placeholder ={this.props.listing.price || "price"} onChange={(e) => dispatch(handleChange('price',e.target.value))} />
-                <p>Description</p>
-                <input type='text' placeholder={this.props.listing.description || "description"} onChange={(e) => dispatch(handleChange('description',e.target.value))} />
-                <p>Category</p>
-                <input type='text' placeholder={this.props.listing.category } onChange={(e) => dispatch(handleChange('category',e.target.value))} />
-                
-                </Modal.Body>
-                <Modal.Footer>
-                <Button bsStyle="primary" onClick={this.editListing}><Link to='/'>Add</Link></Button> 
-                <Button onClick={this.props.cancelMenu}><Link to='/'>Cancel</Link></Button> 
-                </Modal.Footer>
-                
-                
-
-            </Modal.Dialog>    
-          </div> */}

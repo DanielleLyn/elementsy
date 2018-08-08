@@ -9,6 +9,7 @@ import {Jumbotron, Grid, Row, Col, Button} from 'react-bootstrap';
 // import {EditModal} from '../EditModal/EditModal';
 import Tarot from '../Tarot/Tarot';
 import ScrollUp from '../ScrollUp/ScrollUp';
+import EditModal from '../EditModal/EditModal.jsx';
 
 export default class Home extends Component {
   constructor(props){
@@ -17,8 +18,9 @@ export default class Home extends Component {
     this.state={
       showMenu: false,
       showReading: false,
-
+      user:{},
       listings: [], //this.props.listing
+      currentModalListing: {},
       
     }
     this.deleteListing = this.deleteListing.bind(this);
@@ -34,15 +36,16 @@ export default class Home extends Component {
     }
 
     axios.all([listing(), user()]).then(axios.spread((listings, user)=> { //?
-      console.log(user.data)
+      // console.log('***user', user.data)
       this.setState({
         listings: listings.data,
         user: user.data
       })
+      // console.log('---state', this.state)
     }))
 
     axios.get('/api/listings').then(response => { //need to pass this down through props 
-      console.log('.....response',response.data)
+      // console.log('.....response',response.data)
       this.setState({
         listings: response.data
       })
@@ -65,7 +68,8 @@ export default class Home extends Component {
       description:description,
       category:category,
       id:id,
-      user_id:user_id
+      user_id:user_id,
+
       
     }
     console.log('post',post)
@@ -79,7 +83,7 @@ export default class Home extends Component {
   
     axios.get(`/api/listing/${id}`)
     .then(response => { 
-      console.log('.....response',response.data)
+      // console.log('.....response',response.data)
       //need to set state 
       this.setState({
         itemName: response.data.name,
@@ -99,7 +103,8 @@ export default class Home extends Component {
       )
     })
     this.setState({
-      showMenu: true
+      showMenu: true,
+      currentModalListing: listingToEdit[0],
     })
 
     
@@ -129,14 +134,14 @@ export default class Home extends Component {
   
   render() {
 
-    console.log('this.state.user',this.state.user)
+    // console.log('this.state.user',this.state.user.id)
     // console.log('listings----', this.state.listings);
-    const{showMenu} = this.state;
-    const{showReading}=this.state;
-
+    // const{showMenu} = this.state;
+    // const{showReading}=this.state;
+    // console.log('----', user.id)
     const ViewAll = this.state.listings.map((listing, index) => {
       return <div key={listing.id}>
-        <Listing deleteListing ={this.deleteListing}{...listing} addListingToCart={this.addListingToCart} changeMenu={this.changeMenu} showMenu={this.state.showMenu} cancelMenu={this.cancelMenu} listingToEdit = {this.state.listingToEdit} />
+        <Listing user={this.state.user.id} deleteListing ={this.deleteListing} {...listing} addListingToCart={this.addListingToCart} changeMenu={this.changeMenu} showMenu={this.state.showMenu} cancelMenu={this.cancelMenu} listingToEdit = {this.state.listingToEdit}  />
 
         </div>
     })
@@ -144,6 +149,11 @@ export default class Home extends Component {
     // console.log('view all', ViewAll);
     return (
       <Grid>
+
+        <div className =  {this.state.showMenu ? "menuopen" : "menu"}>
+            <EditModal cancelMenu = {this.cancelMenu} listing={this.state.currentModalListing}  changeMenu={this.changeMenu}  />
+        </div>
+
       <div className='appHome'>
         <Row className= 'row1'>
           <Col className='col1' xs={12} md={12} lg={6} > 
