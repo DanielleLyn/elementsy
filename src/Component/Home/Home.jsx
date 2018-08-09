@@ -10,14 +10,16 @@ import {Jumbotron, Grid, Row, Col, Button} from 'react-bootstrap';
 import Tarot from '../Tarot/Tarot';
 import ScrollUp from '../ScrollUp/ScrollUp';
 import EditModal from '../EditModal/EditModal.jsx';
+import Moon from '../FullMoon/FullMoon';
 
 export default class Home extends Component {
   constructor(props){
     super(props);
 
     this.state={
-      showMenu: false,
-      showReading: false,
+      showMoon:false,
+      showMenu:false,
+      showReading:false,
       user:{},
       listings: [], //this.props.listing
       currentModalListing: {},
@@ -131,6 +133,18 @@ export default class Home extends Component {
       showReading: false
     })
   }
+
+  changeMoon = () => {
+    this.setState({
+      showMoon:true
+    })
+  }
+
+  cancelMoon = () => {
+    this.setState ({
+      showMoon:false
+    })
+  }
   
   render() {
 
@@ -157,13 +171,15 @@ export default class Home extends Component {
       <div className='appHome'>
         <Row className= 'row1'>
           <Col className='col1' xs={12} md={12} lg={6} > 
-          <Button onClick={() => this.changeReading()} > Tarot Reading </Button>
+          <Button bsStyle='warning' onClick={() => this.changeReading()}> Tarot Reading </Button>
           {this.state.showReading ? <Tarot cancelReading ={this.cancelReading} /> : null}
       {/* <Tarot cancelReading ={this.cancelReading} showReading ={this.state.showReading}/>   */}
            {/* <Tarot /> */}
           </Col>
           <Col className='col2' xs={12} md={12} lg={6} >
-            moon
+            <Button bsStyle='warning' onClick={()=> this.changeMoon()}> Moon Ifo </Button>
+            {this.state.showMoon ? <Moon cancelMoon={this.cancelMoon} /> : null}
+            
           </Col>
         </Row>
       

@@ -5,12 +5,12 @@ const bodyParser = require('body-parser');
 const massive = require('massive');
 const session = require('express-session');
 
-const checkForSession = require('./middlewares/checkForSession');
+const checkForSession = require('./Middlewares/checkForSession');
 
 
 const app = express();
 const c = require('./Controller/controller');
-
+console.log(require('dotenv').config())
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
