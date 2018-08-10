@@ -37,8 +37,7 @@ class Home extends Component {
     }
 
     axios.all([listing(), user()]).then(axios.spread((listings, user)=> { 
-      // this.props.setListings(listings.data)
-      
+      this.props.setListings(listings.data)
       this.setState({
         listings: listings.data,
         user: user.data
@@ -46,11 +45,8 @@ class Home extends Component {
     }))
 
 
-    // axios.get('/api/listings').then(response => { //need to pass this down through props 
-    //   // console.log('.....response',response.data)
-    //   this.setState({
-    //     listings: response.data
-    //   })
+    // axios.get('/api/listings').then(response => { 
+    //  this.props.setListings(response.data)
     // })
   }
 
@@ -199,10 +195,10 @@ class Home extends Component {
   }
   
   render() {
-   
+   console.log('-----',this.props.state.listings)
     console.log('current view', this.state.currentView)
     // console.log('----', user.id)
-    const ViewAll = this.state.listings.map((listing, index) => {
+    const ViewAll = this.props.state.listings.map((listing, index) => {
       return <div key={listing.id}>
         <Listing user={this.state.user.id} 
         deleteListing ={this.deleteListing} 
@@ -232,7 +228,7 @@ class Home extends Component {
           {this.state.showReading ? <Tarot cancelReading ={this.cancelReading} /> : null}
           </Col>
           <Col className='col2' xs={12} md={12} lg={6} >
-            <Button bsStyle='warning' onClick={()=> this.changeMoon()}> Moon Ifo </Button>
+            <Button bsStyle='warning' onClick={()=> this.changeMoon()}> Moon Info </Button>
             {this.state.showMoon ? <Moon cancelMoon={this.cancelMoon} /> : null}
           </Col>
           <Col>

@@ -16,6 +16,11 @@ class CustomNavbar extends Component {
         
     }
 
+    getAll(){
+        axios.get('/api/listings').then(response => { 
+         this.props.setListings(response.data)
+        })
+    }
     getClothes(){
         axios.get('/api/clothes').then(response => {  
           this.props.setListings(response.data)        
@@ -64,23 +69,26 @@ class CustomNavbar extends Component {
 
                       <Nav pullLeft>
                     <NavDropdown className='menuItem2' eventKey={2} title="View Products" id="Menu-dropdown" >
+                    <MenuItem componentClass='span' eventKey="2.1">
+                            <a onClick={() => this.getAll()}>View All</a>
+                        </MenuItem>
                         <MenuItem componentClass='span' eventKey="2.1">
-                            <a onClick={() => this.props.selectedCategoryFunc('clothes')}>Clothes</a>
+                            <a onClick={() => this.getClothes()}>Clothes</a>
                         </MenuItem>
                         <MenuItem componentClass='span' eventKey="2.2">
-                        <a onClick={() => this.props.selectedCategoryFunc('crystals')}>Crystals</a>
+                        <a onClick={() => this.getCrystals()}>Crystals</a>
                         </MenuItem>
                         <MenuItem componentClass='span' eventKey="2.3">
-                        <a onClick={() => this.props.selectedCategoryFunc('incense')}>Incense</a>
+                        <a onClick={() => this.getIncense()}>Incense</a>
                         </MenuItem>
                         <MenuItem componentClass='span' eventKey="2.4">
-                        <a onClick={() => this.props.selectedCategoryFunc('tarot')}>Tarot</a>
+                        <a onClick={() => this.getTarot()}>Tarot</a>
                         </MenuItem>
                         <MenuItem componentClass='span' eventKey="2.5">
-                        <a onClick={() => this.props.selectedCategoryFunc('jewelry')}>Jewelry</a>
+                        <a onClick={() => this.getJewelry()}>Jewelry</a>
                         </MenuItem>
                         <MenuItem componentClass='span' eventKey="2.6">
-                        <a  onClick={() => this.props.selectedCategoryFunc('other')}>Other</a>
+                        <a  onClick={() => this.getOther()}>Other</a>
                         </MenuItem>
                     </NavDropdown>
                     </Nav>
