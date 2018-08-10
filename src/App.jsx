@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-// import {Link} from 'react-router-dom';
-// import {Jumbotron, Grid, Row, Col, Image, Button, Nav, NavItem} from 'react-bootstrap';
 import routes from './routes';
 import './App.css';
 import Navbar from './Component/Navbar/CustomNavbar';
-// import {Tarot} from '.Component/Tarot/Tarot'
-
 import axios from 'axios';
-// import Home from './Component/Home/Home';
-// import Listing from './Component/Listing/Listing';
+
 
 class App extends Component {
   constructor(){
@@ -29,12 +24,10 @@ class App extends Component {
   }
 
 
-
-
   render() {
   
     // const{showMenu} = this.state;
-    console.log('App** Category', this.props.selectedCategory)
+    // console.log('App** Category', this.props.selectedCategory)
     return (
       <div>
            <div>

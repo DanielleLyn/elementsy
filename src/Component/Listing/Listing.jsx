@@ -1,30 +1,16 @@
 import React from 'react';
 // import {Link} from 'react-router-dom';
-import {ListGroupItem, Grid, ListGroup,Button} from 'react-bootstrap';
-import './Listing.css';
+import {ListGroupItem, Grid, ListGroup, Button, Alert} from 'react-bootstrap';
 import '../Home/Home.css';
-// import EditModal from '../EditModal/EditModal';
+
 
 export default function Listing(props){
-    // console.log('**', props.user)
-// let listing = {
-//     id: props.id,
-//     name: props.name,
-//     image: props.image,
-//     price: props.price,
-//     description: props.description,
-//     category: props.category,
-//     user_id: props.user_id
-// }
+
     
     return(
         <Grid>
         <div>
-           
-         {/* <div className =  {props.showMenu ? "menuopen" : "menu"}>
-            <EditModal cancelMenu = {props.cancelMenu} listing={listing}  changeMenu={props.changeMenu}  />
-        </div> */}
-
+      
             <ListGroup>
                 <ListGroupItem >
                     <h2>{props.name}</h2>
@@ -38,7 +24,11 @@ export default function Listing(props){
                 </ListGroupItem>
                     <Button onClick= {()=> props.changeMenu(props.id)}>edit </Button>
                     <Button onClick={()=>props.deleteListing(props.id)}>delete</Button> 
-                    <Button onClick={() => props.addListingToCart(props.id,props.image,props.name,props.price,props.description,props.category)}>add to cart</Button>
+                    <Button onClick={() => props.addListingToCart(props.id,props.image,props.name,props.price,props.description,props.category)}>
+                    add to cart
+                    </Button>
+                    {/* <Button onClick={()=>props.handleShow()}>alert</Button> */}
+                  
                 </ListGroup>
 
         </div>

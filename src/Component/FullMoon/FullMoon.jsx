@@ -40,13 +40,7 @@ export default class Moon extends Component{
 
     render(){
       
-    
-        // const moon = this.state.moonInfo.map((e,i) => {
-        //     return <div key={e.id}>
-        //     <h5>{e.dateTimeISO}</h5>
-        //     </div>
-        // })
-        console.log()
+      
         return(
 
             <div className = 'moonWidget'>
@@ -68,8 +62,6 @@ export default class Moon extends Component{
                     </div>
                     </div>
 
-
-                
                 </Modal.Body>
 
                 <Modal.Footer>

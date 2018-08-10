@@ -10,15 +10,11 @@ export default class Tarot extends Component {
             card: [],
             myCards:[],
            
-            // cards:[],
-
-
+           
         }
         this.getFortune = this.getFortune.bind(this);
     }
         getFortune () {
-
-          
             axios.get('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=3').then(res => {
                 console.log('******res.data.cards', res.data.cards)
                 this.setState({
@@ -29,29 +25,11 @@ export default class Tarot extends Component {
             });
         }
 
-   
-       
     render() {
       
-        // console.log('props', this.props)
-        // console.log('one card******', oneCard);
-        // const cards = this.state.myCards.map((e,i) =>{
-        //     return <div key={e.id}>
-        //     <h6>Name: </h6>
-        //     <h3>{e.name}</h3>
-        //     <h6>Meaning: </h6>
-        //     <p>{e.meaning_up}</p>
-        //     </div>
-        // })
-
         console.log('first card', this.state.myCards)
       return(
-
-                
-        //    <div className =  {props.showMenu ? "menuopen" : "menu"}>
-        //    <EditModal cancelMenu = {props.cancelMenu} listing={listing} />
-
-             
+    
 
                        <div className = 'tarotWidget'>
             <Modal.Dialog>

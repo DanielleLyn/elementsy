@@ -4,16 +4,15 @@ import {Link} from 'react-router-dom';
 import {selectedCategoryFunc} from '../../ducks/reducer';
 import {setListings} from '../../ducks/reducer';
 import {connect} from 'react-redux';
-import './CustomNavbar.css';
 import axios from 'axios';
+import './CustomNavbar.css';
 
 class CustomNavbar extends Component {
     constructor(props){
         super(props);
         this.state = {
 
-        }
-        
+        }  
     }
 
     getAll(){
@@ -55,11 +54,11 @@ class CustomNavbar extends Component {
 
 
     render (props){
-        console.log(this.props.selectedCategory, this.props)
+
         return(
             <Navbar default fluid>
                 <Navbar.Header>
-                    <Navbar.Brand>
+                    <Navbar.Brand className='brand'>
                         <Link to = '/'> Elementsy </Link>
                     </Navbar.Brand>
                       <Navbar.Toggle />
@@ -98,25 +97,19 @@ class CustomNavbar extends Component {
                         <MenuItem componentClass='span' eventKey="2.1">
                             <Link to='/login'>Login/Profile</Link>
                         </MenuItem>
-                        {/* <MenuItem eventKey="2.2">
-                            <Link to='/profile'>Profile</Link> */}
-                        {/* </MenuItem> */}
+                     
                         <MenuItem componentClass='span' eventKey="2.3">
                             <Link to='/add'>AddListing</Link>
                         </MenuItem>
                     </NavDropdown>
 
-                  
-
                      <NavItem eventKey={2}> 
                         <Link to='/'> Home </Link>
                     </NavItem>
-                    {/* className='menuItem' componentClass='span' */}
-
+                  
                     <NavItem  eventKey={3}> 
                         <Link to='/Cart/'> Cart </Link>
                     </NavItem>
-
 
                     </Nav>
                 </Navbar.Collapse>

@@ -1,5 +1,5 @@
 const axios = require('axios')
-// let allListings = [];
+
 
 module.exports={
     read:(req,res)=>{
@@ -45,10 +45,9 @@ module.exports={
     },
 
     addToCart: (req,res) =>{
-    // const {id} = req.query;
+  
     req.session.cart.push(req.body)
 
-    // console.log('===========================', req.session.cart)
     res.end(); 
     },
 

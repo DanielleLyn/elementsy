@@ -2,14 +2,14 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import './Home.css';
 import Listing from '../Listing/Listing';
-import {Jumbotron, Grid, Row, Col, Button} from 'react-bootstrap';
+import {Jumbotron, Grid, Row, Col, Button, Alert, Modal} from 'react-bootstrap';
 import Tarot from '../Tarot/Tarot';
 import ScrollUp from '../ScrollUp/ScrollUp';
 import EditModal from '../EditModal/EditModal.jsx';
 import Moon from '../FullMoon/FullMoon';
 import {setListings} from '../../ducks/reducer';
-// import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 class Home extends Component {
   constructor(props){
@@ -22,9 +22,14 @@ class Home extends Component {
       user:{},
       listings: [], 
       currentModalListing: {},
+      show: false,
+      cartItem:'',
+     
       
     }
     this.deleteListing = this.deleteListing.bind(this);
+    this.handleDismiss = this.handleDismiss.bind(this);
+    this.handleShow = this.handleShow.bind(this);
   }
   componentDidMount(){
     
@@ -44,62 +49,7 @@ class Home extends Component {
       })
     }))
 
-
-    // axios.get('/api/listings').then(response => { 
-    //  this.props.setListings(response.data)
-    // })
   }
-
-  // getClothes(){
-  //   axios.get('/api/clothes').then(response => {  
-  //     // console.log('.....response',response.data)
-  //     this.setState({
-  //       listings: response.data
-  //     })
-  //   })
-  // }
-
-  // getCrystals(){
-  //   axios.get('/api/crystals').then(response => {  
-  //     // console.log('.....response',response.data)
-  //     this.setState({
-  //       listings: response.data
-  //     })
-  //   })
-  // }
-  // getIncense(){
-  //   axios.get('/api/incense').then(response => {  
-  //     // console.log('.....response',response.data)
-  //     this.setState({
-  //       listings: response.data
-  //     })
-  //   })
-  // }
-  // getTarot(){
-  //   axios.get('/api/tarot').then(response => {  
-  //     // console.log('.....response',response.data)
-  //     this.setState({
-  //       listings: response.data
-  //     })
-  //   })
-  // }
-  // getJewelry(){
-  //   axios.get('/api/jewelry').then(response => {  
-  //     // console.log('.....response',response.data)
-  //     this.setState({
-  //       listings: response.data
-  //     })
-  //   })
-  // }
-  // getOther(){
-  //   axios.get('/api/other').then(response => {  
-  //     // console.log('.....response',response.data)
-  //     this.setState({
-  //       listings: response.data
-  //     })
-  //   })
-  // }
-
 
 
   deleteListing(id){
@@ -110,6 +60,7 @@ class Home extends Component {
     }).catch(err => console.log('error editing listing', err));
 }
 
+ 
   addListingToCart= (id,image,name,price,description,category,user_id) => {
     let post = {
       image: image,
@@ -120,12 +71,21 @@ class Home extends Component {
       id:id,
       user_id:user_id,
 
-      
     }
-    console.log('post',post)
     axios.post(`/api/cart`, post)
-
+    .then(()=>{
+      this.setState({
+        cartItem: post.name
+      })
+    })
+    .then(()=>{
+      this.handleShow();
+    })
+   
+    console.log('post', post.name)
+    console.log('cart', this.state.cartItem)
     
+
   }
 
   editListing(id){
@@ -133,8 +93,6 @@ class Home extends Component {
   
     axios.get(`/api/listing/${id}`)
     .then(response => { 
-      // console.log('.....response',response.data)
-      //need to set state 
       this.setState({
         itemName: response.data.name,
         itemImage:response.data.image,
@@ -145,6 +103,8 @@ class Home extends Component {
     })
         
   }
+
+ 
 
   changeMenu=(id)=> {
     let listingToEdit = this.state.listings.filter((listing) => {
@@ -193,11 +153,23 @@ class Home extends Component {
       showMoon:false
     })
   }
+
+  handleDismiss() {
+    this.setState({ 
+      show: false 
+    });
+  }
+
+  handleShow() {
+    this.setState({ 
+      show: true 
+    });
+  }
   
   render() {
-   console.log('-----',this.props.state.listings)
-    console.log('current view', this.state.currentView)
-    // console.log('----', user.id)
+  //  console.log('-----',this.props.state.listings)
+    // console.log('current view', this.state.currentView)
+    console.log('----', this.state)
     const ViewAll = this.props.state.listings.map((listing, index) => {
       return <div key={listing.id}>
         <Listing user={this.state.user.id} 
@@ -207,10 +179,12 @@ class Home extends Component {
         changeMenu={this.changeMenu} 
         showMenu={this.state.showMenu} 
         cancelMenu={this.cancelMenu} 
-        listingToEdit = {this.state.listingToEdit}  />
+        listingToEdit = {this.state.listingToEdit}
+        handleShow = {this.handleShow}  />
         </div>
     })
-        
+
+    
     
     return (
       <Grid>
@@ -219,6 +193,30 @@ class Home extends Component {
             <EditModal cancelMenu = {this.cancelMenu} 
             listing={this.state.currentModalListing}  
             changeMenu={this.changeMenu}  />
+        </div>
+
+      <div className =  {this.state.show ? "show" : "noShow"}>
+
+      <Modal.Dialog>
+                <Modal.Header onDismiss={this.handleDismiss}>
+                    <Modal.Title>Item added to cart!</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <div>
+                    {this.state.cartItem} added to cart!
+                    </div>
+
+                </Modal.Body>
+
+                <Modal.Footer>
+               
+                <Button><Link to='/cart'>Go to Cart</Link></Button>
+                <Button onClick={() => this.handleDismiss()}>Cancel</Button> 
+                </Modal.Footer>
+               
+            </Modal.Dialog>  
+
         </div>
 
       <div className='appHome'>
@@ -231,17 +229,7 @@ class Home extends Component {
             <Button bsStyle='warning' onClick={()=> this.changeMoon()}> Moon Info </Button>
             {this.state.showMoon ? <Moon cancelMoon={this.cancelMoon} /> : null}
           </Col>
-          <Col>
-         
-{/*             
-            <Button onClick={() => this.getClothes()}>View Clothes</Button>
-            <Button onClick={() => this.getCrystals()}>View Crystals</Button>
-            <Button onClick={() => this.getIncense()}>View Incense</Button>
-            <Button onClick={() => this.getTarot()}>View Tarot</Button>
-            <Button onClick={() => this.getJewelry()}>View Jewelry</Button>
-            <Button onClick={() => this.getOther()}>View Other</Button> */}
-           
-          </Col>
+          
         </Row>
       
         <Row className='row2'>
@@ -262,6 +250,7 @@ class Home extends Component {
     );
   }
 }
+
 const mapStateToProps = (state) => {
   return {
       

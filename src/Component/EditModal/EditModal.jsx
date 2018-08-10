@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import React, {Component} from 'react';
-// import {handleChange} from '../../ducks/reducer';
 import {connect} from 'react-redux';
 import{Modal, Button} from 'react-bootstrap';
 
@@ -12,7 +11,6 @@ class EditModal extends Component {
     constructor(props){
         super(props);
         this.state={
-        //   listingToEdit:{},
           name: '',
           image: '',
           price: '',
@@ -25,7 +23,8 @@ class EditModal extends Component {
           updatedCategory: '',            
             
         }
-        // console.log('***props', this.props)
+        this.updateListing = this.updateListing.bind(this); 
+      
     }
 
     updateListing(id, name, image, price, description, category){

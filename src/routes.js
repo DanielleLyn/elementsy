@@ -14,8 +14,7 @@ const routes = (
         <Route path="/cart" component = {Cart} />
         <Route path="/profile" component = {Profile} />
         <Route path="/add" component = {AddListing} />
-        {/* <Route path='/tarot' component = {Home} /> */}
-    
+       
     </Switch>
     
 

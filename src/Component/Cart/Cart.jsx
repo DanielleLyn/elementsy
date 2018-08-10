@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import {Link, Switch, Route} from 'react-router-dom';
-// import Home from '../Home/Home';
 import './Cart.css';
 import {Grid, Jumbotron} from 'react-bootstrap';
+import ScrollUp from '../ScrollUp/ScrollUp';
 
 
 export default class Cart extends Component {
@@ -32,8 +31,7 @@ export default class Cart extends Component {
               <h4> {item.price}</h4>
                <h6>{item.category}</h6>
                <h6>{item.user_id}</h6>
-             {/* <Button>Delete</Button> */}
-              
+      
             </div>
       
     }) : 'Your Cart is Empty'
@@ -46,6 +44,9 @@ export default class Cart extends Component {
           </div>
 
   </Jumbotron>
+  <div className="footer">
+         <ScrollUp style={{width: 75}} ToggledStyle={{right: 100}}/>
+        </div>
 </Grid>
     
     )

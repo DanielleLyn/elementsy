@@ -106,7 +106,7 @@ app.get('/api/tarot', vc.getTarot);
 app.get('/api/jewelry', vc.getJewelry);
 app.get('/api/other', vc.getOther);
 
-// app.get('/api/v1/cards/random', c.getOne);
+
 
 app.get('/api/userdata', (req,res) => {
   if (req.session.user) {

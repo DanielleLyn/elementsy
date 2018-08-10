@@ -8,16 +8,17 @@
 }
 .col1{
 
-    height:200px;
+    height:100px;
 }
 .col2{
   
-    height: 200px;
+    height: 100px;
 }
 
 .menu{
     display:none;
 }
+
 
 .menuopen{
     /* display:none; */
@@ -25,5 +26,12 @@
 }
 
 .col1{
-   display: block;
+    display: block;
 }
+ .noShow{
+ display:none;
+ }
+ 
+ .show{
+     display: block;
+ }

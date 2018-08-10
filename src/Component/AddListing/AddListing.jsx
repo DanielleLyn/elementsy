@@ -5,14 +5,12 @@ import {handleChange} from '../../ducks/reducer';
 import {connect} from 'react-redux';
 import{Modal, Button} from 'react-bootstrap';
 import './AddListing.css';
-// import {AddModal} from '../AddModal/AddModal';
-// import Listing from '../Listing/Listing';
+
 
 class AddListing extends Component {
     constructor(){
         super();
-       this.createListing = this.createListing.bind(this);
-           
+       this.createListing = this.createListing.bind(this);   
         }
         
     createListing(){
@@ -24,8 +22,6 @@ class AddListing extends Component {
         }).catch(err=> console.log('Axios Post Listing error', err));
     }
    
-
-
     render(){
         const {dispatch} = this.props;
     return(
@@ -65,14 +61,8 @@ class AddListing extends Component {
           </div>
          
           
-           
             </div>
 
-            
-
-          
-          
-  
         </div>
 
         )
