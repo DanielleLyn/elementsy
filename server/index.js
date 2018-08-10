@@ -4,12 +4,12 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 const massive = require('massive');
 const session = require('express-session');
-
 const checkForSession = require('./Middlewares/checkForSession');
-
 
 const app = express();
 const c = require('./Controller/controller');
+const vc = require('./Controller/view_controller');
+
 console.log(require('dotenv').config())
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -48,13 +48,7 @@ app.get('/auth/callback', (req, res) => {
       return axios.get(`https://${process.env.REACT_APP_DOMAIN}/userinfo/?access_token=${accessToken}`) 
     }
   
-    // function setUserToSessionGetAuthAccessToken(userInfoResponse){
-    //     req.session.user = userInfoResponse.data
-    //   console.log(userInfoResponse.data)
-    //  res.end()
-     
-    // }
-
+   
     function storeUserInfoInDataBase(response) {
         console.log('----response data', response.data );
         const auth0id = response.data.sub;
@@ -90,8 +84,8 @@ app.get('/auth/callback', (req, res) => {
     .catch(err =>  console.log(err))      
   })
 
- app.get('/api/user', c.read);
- app.get('/api/userListing/:id', c.userListing)
+app.get('/api/user', c.read);
+app.get('/api/userListing/:id', c.userListing)
 
 app.get('/api/listings', c.listingRead);
 app.post('/api/listing', c.createListing);
@@ -100,19 +94,25 @@ app.get('/api/listing/:id', c.getListing);
 app.put('/api/listing/:id', c.editListing);
 
 app.delete('/api/listings/:id', c.deleteListing);
+
 app.post('/api/cart', c.addToCart);
 app.get('/api/cart', c.readCart);
+
+
+app.get('/api/clothes', vc.getClothes);
+app.get('/api/crystals', vc.getCrystals);
+app.get('/api/incense', vc.getIncense);
+app.get('/api/tarot', vc.getTarot);
+app.get('/api/jewelry', vc.getJewelry);
+app.get('/api/other', vc.getOther);
+
+// app.get('/api/v1/cards/random', c.getOne);
 
 app.get('/api/userdata', (req,res) => {
   if (req.session.user) {
     res.send(req.session.user)
   }
 })
-
-// app.get('/api/v1/cards/random', c.getOne);
-
-
-// app.get('/api/v1/cards/random'. c.randomTarot)
 
 const path= require('path')
 app.get('*',(req,res) => {

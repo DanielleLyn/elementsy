@@ -35,14 +35,14 @@ export default class Tarot extends Component {
       
         // console.log('props', this.props)
         // console.log('one card******', oneCard);
-        const cards = this.state.myCards.map((e,i) =>{
-            return <div key={e.id}>
-            <h6>Name: </h6>
-            <h3>{e.name}</h3>
-            <h6>Meaning: </h6>
-            <p>{e.meaning_up}</p>
-            </div>
-        })
+        // const cards = this.state.myCards.map((e,i) =>{
+        //     return <div key={e.id}>
+        //     <h6>Name: </h6>
+        //     <h3>{e.name}</h3>
+        //     <h6>Meaning: </h6>
+        //     <p>{e.meaning_up}</p>
+        //     </div>
+        // })
 
         console.log('first card', this.state.myCards)
       return(

@@ -32,7 +32,9 @@ class App extends Component {
 
 
   render() {
+  
     // const{showMenu} = this.state;
+    console.log('App** Category', this.props.selectedCategory)
     return (
       <div>
            <div>
@@ -53,16 +55,4 @@ class App extends Component {
 
 export default App;
 
-// modal hidden by default
-// click "edit"
-// visit database and grab listing
-// populate modal with the listing's details
-// make modal appear
-// edit modal 
-// click save
-// update existing row in database with new values
-// refresh page 
-
-// Bonus:
-// make the modal header switch between add listing and edit listing 
 

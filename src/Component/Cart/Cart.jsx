@@ -3,7 +3,7 @@ import axios from 'axios';
 // import {Link, Switch, Route} from 'react-router-dom';
 // import Home from '../Home/Home';
 import './Cart.css';
-import {Grid, Jumbotron, Button} from 'react-bootstrap';
+import {Grid, Jumbotron} from 'react-bootstrap';
 
 
 export default class Cart extends Component {
@@ -36,7 +36,7 @@ export default class Cart extends Component {
               
             </div>
       
-    }) : 'Nothing in cart'
+    }) : 'Your Cart is Empty'
 
     return (
 <Grid>

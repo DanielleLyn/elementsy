@@ -5,6 +5,8 @@ const initialState = {
     description: '',
     category: '',
     user_id:'',
+    selectedCategory:'',
+    listings:[],
 };
 
 //Action types
@@ -15,6 +17,11 @@ const UPDATE_PRICE = 'UPDATE_PRICE';
 const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
 const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
 const UPDATE_USER_ID = 'UPDATE_USER_ID';
+
+
+const SELECTED_CAT = 'SELECTED_CAT';
+
+const SET_LISTINGS = 'SET_LISTINGS';
 
 export default (state=initialState, action) => {
     switch(action.type){
@@ -36,6 +43,12 @@ export default (state=initialState, action) => {
     
         case UPDATE_USER_ID:
             return Object.assign({}, state, {user_id: action.payload});
+
+        case SELECTED_CAT: 
+            return Object.assign( {}, state, {selectedCategory: action.payload});
+        
+        case SET_LISTINGS:
+            return Object.assign({}, state, {listings: action.payload});
 
         default: return state;
     }
@@ -79,4 +92,17 @@ export function handleChange(type, value){
     }
 }
 
+export function selectedCategoryFunc(category){
+    return{
+        type:SELECTED_CAT,
+        payload:category
+    }
+}
+
+export function setListings(listings){
+    return{
+        type:SET_LISTINGS,
+        payload: listings
+    }
+}
 

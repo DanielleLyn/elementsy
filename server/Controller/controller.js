@@ -1,5 +1,5 @@
 const axios = require('axios')
-let allListings = [];
+// let allListings = [];
 
 module.exports={
     read:(req,res)=>{
