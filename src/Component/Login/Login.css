@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
+.loginApp{
+    color: white;
+    
+}
 .loginBody{
     height:1000px;
+}
+.button{
+    color:purple;
+    font-family: Courgette;
+}
+.loginModal{
+    font-family: Courgette;
+    color: purple;
 }

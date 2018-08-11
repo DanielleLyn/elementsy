@@ -17,6 +17,8 @@ export default class Login extends Component {
       id: '',
       
     }
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
   componentDidMount(){
       axios.get('/api/userdata').then(response => {
@@ -35,6 +37,15 @@ export default class Login extends Component {
   login = () => {
     const redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback`);
     window.location = `https://${process.env.REACT_APP_DOMAIN}/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirectUri}&response_type=code`
+  }
+
+  logout() {
+    axios.post('/api/logout').then(response => {
+      this.setState({
+        message: response.data,
+        user:''
+      });
+    });
   }
 
     render(){
@@ -56,20 +67,20 @@ export default class Login extends Component {
             <div>
 
 
-        <Button onClick={this.login}>Log In</Button>
+        <Button className='button' onClick={this.login}>Log In</Button>
            
 
             </div>
-            <div className='ifLoggedIn-modal'>
+            <div className='loginModal'>
             <Modal.Dialog>
                 <Modal.Header>
                     <h1>{ this.state.username || 'Please Log In'}</h1>
                 </Modal.Header>
-                <Modal.Body><h3>  My Listings </h3> </Modal.Body>
+                <Modal.Body><h3>  My Listings: </h3> </Modal.Body>
                 <Modal.Body> {userListings || 'Please log in to view listings'}</Modal.Body>
                 <Modal.Footer>
                     <Button><Link to='/add'> Add New Listing</Link></Button>
-                    <Button>Log Out </Button>
+                    <Button onClick={this.logout}><Link to='/'>Log Out</Link></Button>
                     
           
                 </Modal.Footer>

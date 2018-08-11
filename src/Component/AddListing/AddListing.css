@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
 .AddBody{
     height:1000px;
 }
@@ -5,4 +7,12 @@
 .modal{
      margin-top:100px;
    
+}
+.button{
+    color: purple;
+}
+
+.addListing{
+    color: purple;
+    font-family: Courgette;
 }

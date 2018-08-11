@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette');
 
 .reading{
     display:none;
@@ -12,5 +13,14 @@
 .tarotReading{
     display: flex;
     justify-content: space-around;
+    color: purple;
+    flex-direction: row;
+    
 
+}
+.tarotWidget{
+    font-family: courgette;
+}
+.button{
+    color: purple;
 }

@@ -2,3 +2,8 @@
     height:1000px;
 }
 
+.box{
+    font-size: 50px;
+    color: rgb(233, 213, 233);
+    min-height: 300px;
+}

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import{Modal, Button} from 'react-bootstrap';
-
+import './EditModal.css';
 
 
 
@@ -77,7 +77,7 @@ class EditModal extends Component {
         // console.log('listing', this.props.listing)
         return(
             <div>
-         <div className='EditListing-modal'>
+         <div className='EditModal'>
             <Modal.Dialog>
                 <Modal.Header>
                     <Modal.Title>Edit Listing</Modal.Title>
@@ -97,8 +97,8 @@ class EditModal extends Component {
                 
                 </Modal.Body>
                 <Modal.Footer>
-                <Button bsStyle="primary" onClick= {() => this.updateListing(this.props.listing.id, this.state.updatedName, this.state.updatedImage, this.state.updatedPrice, this.state.updatedDescription, this.state.updatedCategory)} ><Link to='/'> Update Listing </Link></Button> 
-                <Button onClick={() => {
+                <Button className='button' onClick= {() => this.updateListing(this.props.listing.id, this.state.updatedName, this.state.updatedImage, this.state.updatedPrice, this.state.updatedDescription, this.state.updatedCategory)} ><Link to='/'> Update Listing </Link></Button> 
+                <Button className='button' onClick={() => {
                     this.props.cancelMenu()
                     this.cancelClicked()
                     }}>Cancel</Button> 

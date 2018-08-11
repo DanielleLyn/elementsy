@@ -1,10 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+@import url('https://fonts.googleapis.com/css?family=Courgette');
 
 .brand{
     font-family: 'Kaushan Script', cursive;
     font-size: 40px;
+
    
 }
 .navbar-default .navbar-brand {
-    color: rgb(19, 98, 100);
+    color: rgb(68, 34, 95);
 }
+.nav{
+font-family: Courgette;
+color: purple;
+}
+
+.navbar-collapse {
+    background-color: #861dab3b;
+  }
+.container-fluid{
+    background-color: #8e7aa0a1;
+}
+
+.menuItem{
+    color:purple;
+}
+

@@ -119,5 +119,10 @@ app.get('*',(req,res) => {
     res.sendFile(path.join(__dirname, '../build/index.html'))
 })
 
+app.post('/api/logout', (req, res) => {
+  req.session.destroy();
+  res.send('logged out');
+})
+
 const PORT = 5000;
 app.listen(PORT, () => console.log('Listening on Port:'+ PORT))

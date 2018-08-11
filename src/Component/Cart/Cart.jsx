@@ -38,14 +38,16 @@ export default class Cart extends Component {
 
     return (
 <Grid>
+        <div className='cartBody'>
   <Jumbotron>
           <div className='box'>
           {ViewCart}
           </div>
 
   </Jumbotron>
-  <div className="footer">
+        <div className="footer">
          <ScrollUp style={{width: 75}} ToggledStyle={{right: 100}}/>
+        </div>
         </div>
 </Grid>
     

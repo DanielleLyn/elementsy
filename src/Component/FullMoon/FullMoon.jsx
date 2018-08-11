@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Button, Modal} from 'react-bootstrap';
+import './FullMoon.css';
+ 
 
 export default class Moon extends Component{
     constructor(props){
@@ -65,9 +67,9 @@ export default class Moon extends Component{
                 </Modal.Body>
 
                 <Modal.Footer>
-                <Button onClick={() => this.getNewMoon()}>View Next New Moon</Button>
-                <Button onClick={() => this.getMoonPhase()}>View Next Full Moon</Button> 
-                <Button onClick={() => this.props.cancelMoon()}>Cancel</Button> 
+                <Button className='button' onClick={() => this.getNewMoon()}>View Next New Moon</Button>
+                <Button className='button' onClick={() => this.getMoonPhase()}>View Next Full Moon</Button> 
+                <Button className='button' onClick={() => this.props.cancelMoon()}>Cancel</Button> 
                 </Modal.Footer>
                
             </Modal.Dialog>  

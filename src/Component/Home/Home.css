@@ -1,5 +1,6 @@
 .appHome{
     height: 1200px;
+    color: white;
 }
 .logo{
     font-family: cursive;
@@ -9,14 +10,25 @@
 .col1{
 
     height:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .col2{
-  
-    height: 100px;
+    height:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .menu{
     display:none;
+}
+
+.button{
+    background-color: purple;
+    color: purple;
+
 }
 
 
@@ -25,9 +37,7 @@
     display:block;
 }
 
-.col1{
-    display: block;
-}
+
  .noShow{
  display:none;
  }

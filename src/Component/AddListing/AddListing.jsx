@@ -26,7 +26,7 @@ class AddListing extends Component {
         const {dispatch} = this.props;
     return(
 
-        <div className='app'>
+        <div className='addListing'>
         <div className='addListingHeader'>
         
         </div>
@@ -51,8 +51,8 @@ class AddListing extends Component {
                 
                 </Modal.Body>
                 <Modal.Footer>
-                <Button bsStyle="primary" onClick={this.createListing}><Link to='/'>Add</Link></Button> 
-                <Button onClick={this.props.cancelMenu}><Link to='/'>Cancel</Link></Button> 
+                <Button  className='button' onClick={this.createListing}><Link  to='/'>Add</Link></Button> 
+                <Button className='button' onClick={this.props.cancelMenu}><Link  to='/'>Cancel</Link></Button> 
                 </Modal.Footer>
                 
                 

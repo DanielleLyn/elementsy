@@ -40,22 +40,23 @@ export default class Tarot extends Component {
                 <Modal.Body>
                     <div className = 'tarotReading'>
                         {/* {cards} */}
+                        
                         <div>
-                            <h5>{this.state.myCards[0] ? 'Past:' : ''}</h5>
+                            <h4>{this.state.myCards[0] ? 'Past:' : ''}</h4>
                             <h3>{this.state.myCards[0] ? this.state.myCards[0].name : ''}</h3>
                             <h6>{this.state.myCards[0] ? 'Meaning:' : ''}</h6>
                             <p>{this.state.myCards[0] ? this.state.myCards[0].meaning_up : ''}</p>
                         </div>
 
                         <div>
-                            <h5>{this.state.myCards[1] ? 'Present:' : ''} </h5>
+                            <h4>{this.state.myCards[1] ? 'Present:' : ''} </h4>
                             <h3>{this.state.myCards[1] ? this.state.myCards[1].name : ''}</h3>
                             <h6>{this.state.myCards[1] ? 'Meaning:' : ''} </h6>
                             <p>{this.state.myCards[1] ? this.state.myCards[1].meaning_up : ''}</p>
                         </div>
 
                         <div>
-                            <h5>{this.state.myCards[2] ? 'Future:' : ''}</h5>
+                            <h4>{this.state.myCards[2] ? 'Future:' : ''}</h4>
                             <h3>{this.state.myCards[2] ? this.state.myCards[2].name : ''}</h3>
                             <h6>{this.state.myCards[2] ? 'Meaning:' : ''}</h6>
                             <p>{this.state.myCards[2] ? this.state.myCards[2].meaning_up : ''}</p>
@@ -65,8 +66,8 @@ export default class Tarot extends Component {
                 </Modal.Body>
 
                 <Modal.Footer>
-                <Button onClick={() => this.getFortune()}>Tell me my fortune</Button> 
-                <Button onClick={() => this.props.cancelReading()}>Cancel</Button> 
+                <Button className='button' onClick={() => this.getFortune()}>Tell me my fortune</Button> 
+                <Button className='button' onClick={() => this.props.cancelReading()}>Cancel</Button> 
                 </Modal.Footer>
                 
 

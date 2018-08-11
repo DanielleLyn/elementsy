@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
 .app {
   text-align: center;
-  background-image: url("./Assets/afterglow.jpg");
+  background-image: url("./Assets/abstract2.jpg");
 background-size: 100%;
 }
 
@@ -24,7 +26,14 @@ background-size: 100%;
   width: 100px;
 }
 
-
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 0px;
+  margin-bottom: 0px;
+  background-color: #8e7aa0a1;
+  border: 1px solid #ddd;
+}
 
 .App-header {
   background-color: #222;
@@ -33,8 +42,21 @@ background-size: 100%;
   color: white;
 }
 
-
+img {
+  vertical-align: middle;
+  height: 300px;
+}
 
 .App-intro {
   font-size: large;
+}
+
+.jumbotron {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #8b4e79ba;
+  position: static;
+  font-family: 'Courgette';
 }

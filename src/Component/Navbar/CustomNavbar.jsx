@@ -56,7 +56,7 @@ class CustomNavbar extends Component {
     render (props){
 
         return(
-            <Navbar default fluid>
+            <Navbar className='nav' default fluid>
                 <Navbar.Header>
                     <Navbar.Brand className='brand'>
                         <Link to = '/'> Elementsy </Link>
@@ -68,25 +68,25 @@ class CustomNavbar extends Component {
 
                       <Nav pullLeft>
                     <NavDropdown className='menuItem2' eventKey={2} title="View Products" id="Menu-dropdown" >
-                    <MenuItem componentClass='span' eventKey="2.1">
+                    <MenuItem className='menuItem' componentClass='span' eventKey="2.1">
                             <a onClick={() => this.getAll()}>View All</a>
                         </MenuItem>
-                        <MenuItem componentClass='span' eventKey="2.1">
+                        <MenuItem className='menuItem'  componentClass='span' eventKey="2.1">
                             <a onClick={() => this.getClothes()}>Clothes</a>
                         </MenuItem>
-                        <MenuItem componentClass='span' eventKey="2.2">
+                        <MenuItem className='menuItem' componentClass='span' eventKey="2.2">
                         <a onClick={() => this.getCrystals()}>Crystals</a>
                         </MenuItem>
-                        <MenuItem componentClass='span' eventKey="2.3">
+                        <MenuItem className='menuItem' componentClass='span' eventKey="2.3">
                         <a onClick={() => this.getIncense()}>Incense</a>
                         </MenuItem>
-                        <MenuItem componentClass='span' eventKey="2.4">
+                        <MenuItem className='menuItem' componentClass='span' eventKey="2.4">
                         <a onClick={() => this.getTarot()}>Tarot</a>
                         </MenuItem>
-                        <MenuItem componentClass='span' eventKey="2.5">
+                        <MenuItem className='menuItem' componentClass='span' eventKey="2.5">
                         <a onClick={() => this.getJewelry()}>Jewelry</a>
                         </MenuItem>
-                        <MenuItem componentClass='span' eventKey="2.6">
+                        <MenuItem className='menuItem' componentClass='span' eventKey="2.6">
                         <a  onClick={() => this.getOther()}>Other</a>
                         </MenuItem>
                     </NavDropdown>

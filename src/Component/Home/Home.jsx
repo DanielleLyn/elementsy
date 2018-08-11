@@ -25,7 +25,6 @@ class Home extends Component {
       show: false,
       cartItem:'',
      
-      
     }
     this.deleteListing = this.deleteListing.bind(this);
     this.handleDismiss = this.handleDismiss.bind(this);
@@ -222,11 +221,11 @@ class Home extends Component {
       <div className='appHome'>
         <Row className= 'row1'>
           <Col className='col1' xs={12} md={12} lg={6} > 
-          <Button bsStyle='warning' onClick={() => this.changeReading()}> Tarot Reading </Button>
+          <Button className='button' onClick={() => this.changeReading()}> Tarot Reading </Button>
           {this.state.showReading ? <Tarot cancelReading ={this.cancelReading} /> : null}
           </Col>
           <Col className='col2' xs={12} md={12} lg={6} >
-            <Button bsStyle='warning' onClick={()=> this.changeMoon()}> Moon Info </Button>
+            <Button className='button' onClick={()=> this.changeMoon()}> Moon Info </Button>
             {this.state.showMoon ? <Moon cancelMoon={this.cancelMoon} /> : null}
           </Col>
           
