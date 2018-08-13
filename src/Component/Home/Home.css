@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
+
 .appHome{
     height: 1200px;
     color: white;
@@ -44,4 +47,8 @@
  
  .show{
      display: block;
+ }
+ .cartAlert{
+    font-family: courgette;
+    color: purple;
  }

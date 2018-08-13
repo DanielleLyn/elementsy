@@ -4,25 +4,36 @@
 .brand{
     font-family: 'Kaushan Script', cursive;
     font-size: 40px;
-
-   
+  }
+  
+  .navbar-default .navbar-nav>li>a {
+    color: rgb(17, 2, 19);
 }
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: rgb(46, 11, 46);
+    background-color: transparent;
+}
+a {
+    color: rgb(46, 11, 46);
+    text-decoration: none;
+}
+
 .navbar-default .navbar-brand {
-    color: rgb(68, 34, 95);
+    color: rgb(26, 7, 43);
 }
 .nav{
 font-family: Courgette;
-color: purple;
+color: rgb(46, 11, 46);
 }
 
 .navbar-collapse {
     background-color: #861dab3b;
   }
 .container-fluid{
-    background-color: #8e7aa0a1;
+    background-color: #21053ba1;
 }
 
-.menuItem{
+/* .menuItem{
     color:purple;
 }
-
+ */

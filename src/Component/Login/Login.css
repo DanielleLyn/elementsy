@@ -14,4 +14,9 @@
 .loginModal{
     font-family: Courgette;
     color: purple;
+    height: 300px;
+   
+}
+.modal{
+    overflow:hidden;
 }

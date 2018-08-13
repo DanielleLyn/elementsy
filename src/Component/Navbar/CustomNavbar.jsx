@@ -13,6 +13,13 @@ class CustomNavbar extends Component {
         this.state = {
 
         }  
+        this.getAll = this.getAll.bind(this); 
+        this.getClothes = this.getClothes.bind(this); 
+        this.getCrystals = this.getCrystals.bind(this); 
+        this.getIncense = this.getIncense.bind(this); 
+        this.getTarot = this.getTarot.bind(this); 
+        this.getJewelry = this.getJewelry.bind(this); 
+        this.getOther = this.getOther.bind(this); 
     }
 
     getAll(){

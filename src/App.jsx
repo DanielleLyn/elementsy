@@ -11,6 +11,7 @@ class App extends Component {
     this.state={
      
     }
+    this.createListing=this.createListing.bind(this);
   }
 
 

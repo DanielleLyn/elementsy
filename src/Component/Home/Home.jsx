@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import './Home.css';
 import Listing from '../Listing/Listing';
-import {Jumbotron, Grid, Row, Col, Button, Alert, Modal} from 'react-bootstrap';
+import {Jumbotron, Grid, Row, Col, Button, Modal} from 'react-bootstrap';
 import Tarot from '../Tarot/Tarot';
 import ScrollUp from '../ScrollUp/ScrollUp';
 import EditModal from '../EditModal/EditModal.jsx';
@@ -29,6 +29,15 @@ class Home extends Component {
     this.deleteListing = this.deleteListing.bind(this);
     this.handleDismiss = this.handleDismiss.bind(this);
     this.handleShow = this.handleShow.bind(this);
+    this.addListingToCart = this.addListingToCart.bind(this);
+    this.editListing = this.addListingToCart.bind(this);
+    this.changeMenu=this.changeMenu.bind(this);
+    this.cancelMenu=this.cancelMenu.bind(this);
+    this.changeReading=this.changeReading.bind(this);
+    this.cancelReading=this.cancelReading.bind(this);
+    this.changeMoon=this.changeMoon.bind(this);
+    this.cancelMoon=this.cancelMoon.bind(this);
+    
   }
   componentDidMount(){
     
@@ -196,7 +205,7 @@ class Home extends Component {
 
       <div className =  {this.state.show ? "show" : "noShow"}>
 
-      <Modal.Dialog>
+      <Modal.Dialog className='cartAlert'> 
                 <Modal.Header onDismiss={this.handleDismiss}>
                     <Modal.Title>Item added to cart!</Modal.Title>
                 </Modal.Header>

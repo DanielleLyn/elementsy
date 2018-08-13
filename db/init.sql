@@ -6,7 +6,7 @@ CREATE TABLE users(
     auth0_id VARCHAR,
     username VARCHAR unique not null,
     email VARCHAR unique not null
-)
+);
 
 CREATE TABLE listings(
     id SERIAL PRIMARY KEY,

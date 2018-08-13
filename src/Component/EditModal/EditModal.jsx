@@ -11,11 +11,6 @@ class EditModal extends Component {
     constructor(props){
         super(props);
         this.state={
-          name: '',
-          image: '',
-          price: '',
-          description: '',
-          category: '',
           updatedName:'',
           updatedImage: '',
           updatedPrice: '',
@@ -24,6 +19,8 @@ class EditModal extends Component {
             
         }
         this.updateListing = this.updateListing.bind(this); 
+        this.changeHandler = this.changeHandler.bind(this); 
+        this.cancelClicked = this.cancelClicked.bind(this); 
       
     }
 
@@ -50,6 +47,7 @@ class EditModal extends Component {
                 description: '',
                 category: '',
             })
+            window.location.reload();
         })
     }
 
@@ -85,19 +83,19 @@ class EditModal extends Component {
 
                 <Modal.Body>
                 <p>Item Name</p>
-                <input name='updatedName' type="text" onChange={(e) => this.changeHandler(e.target.name, e.target.value)} placeholder={this.props.listing.name || "name"} value={this.state.updatedName || this.props.listing.name}/>
+                <input name='updatedName' type="text" onChange={(e) => this.changeHandler('updatedName', e.target.value)} placeholder={this.props.listing.name || "name"} value={this.state.updatedName || this.props.listing.name}/>
                 <p>Image</p>
-                <input name='updatedImage' type="text" onChange={(e) => this.changeHandler(e.target.name, e.target.value)} placeholder={this.props.listing.image || "image"} value={this.props.listing.image} />
+                <input name='updatedImage' type="text" onChange={(e) => this.changeHandler('updatedImage', e.target.value)} placeholder={this.props.listing.image || "image"} value={this.state.updatedImage || this.props.listing.image} />
                 <p>Price</p>
-                <input name='updatedPrice' type='text' onChange = {(e) => this.changeHandler(e.target.name, e.target.value)} placeholder ={this.props.listing.price || "price"} value={this.props.listing.price}  />
+                <input name='updatedPrice' type='text' onChange = {(e) => this.changeHandler('updatedPrice', e.target.value)} placeholder ={this.props.listing.price || "price"} value={this.state.updatedPrice || this.props.listing.price}  />
                 <p>Description</p>
-                <input name='updatedDescription' type='text' onChange={(e) => this.changeHandler(e.target.name, e.target.value)}placeholder={this.props.listing.description || "description"} value={this.props.listing.description} />
+                <input name='updatedDescription' type='text' onChange={(e) => this.changeHandler('updatedDescription', e.target.value)}placeholder={this.props.listing.description || "description"} value={this.state.updatedDescription || this.props.listing.description} />
                 <p>Category</p>
-                <input name ='updatedCategory' type='text' onChange={(e) => this.changeHandler(e.target.name, e.target.value)} placeholder={this.props.listing.category || "category" } value={this.props.listing.category} />
+                <input name ='updatedCategory' type='text' onChange={(e) => this.changeHandler('updatedCategory', e.target.value)} placeholder={this.props.listing.category || "category" } value={this.state.updatedCategory || this.props.listing.category} />
                 
                 </Modal.Body>
                 <Modal.Footer>
-                <Button className='button' onClick= {() => this.updateListing(this.props.listing.id, this.state.updatedName, this.state.updatedImage, this.state.updatedPrice, this.state.updatedDescription, this.state.updatedCategory)} ><Link to='/'> Update Listing </Link></Button> 
+                <Button className='button' onClick= {() => this.updateListing(this.props.listing.id, this.state.updatedName, this.state.updatedImage, this.state.updatedPrice, this.state.updatedDescription, this.state.updatedCategory)} >Update Listing</Button> 
                 <Button className='button' onClick={() => {
                     this.props.cancelMenu()
                     this.cancelClicked()

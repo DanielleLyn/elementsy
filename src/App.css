@@ -3,13 +3,14 @@
 .app {
   text-align: center;
   background-image: url("./Assets/abstract2.jpg");
-background-size: 100%;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
 }
 
 .widgets{
   
   display: flex;
-
   justify-content: space-between;
   align-items: center;
 }
@@ -45,6 +46,7 @@ background-size: 100%;
 img {
   vertical-align: middle;
   height: 300px;
+  width: 300px;
 }
 
 .App-intro {
