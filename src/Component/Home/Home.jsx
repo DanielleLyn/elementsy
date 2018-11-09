@@ -30,7 +30,7 @@ class Home extends Component {
     this.handleDismiss = this.handleDismiss.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.addListingToCart = this.addListingToCart.bind(this);
-    this.editListing = this.addListingToCart.bind(this);
+    this.editListing = this.editListing.bind(this);
     this.changeMenu=this.changeMenu.bind(this);
     this.cancelMenu=this.cancelMenu.bind(this);
     this.changeReading=this.changeReading.bind(this);

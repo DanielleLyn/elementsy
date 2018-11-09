@@ -5,6 +5,17 @@ module.exports={
     read:(req,res)=>{
         res.status(200).json(req.session.user)
     },
+            userListing:(req,res) => {
+                console.log('userListing hit')
+                
+                const db = req.app.get('db');
+                db.listing_user_join(req.params.id).then(listing => {
+                    console.log('listing', listing)
+                    res.status(200).json({listing});
+                    
+                })
+        
+            },
 
     listingRead: (req, res)=> {
         const db = req.app.get('db');
@@ -71,17 +82,6 @@ module.exports={
         res.status(200).json(card);
     }, 
 
-    userListing:(req,res) => {
-        console.log('userListing hit')
-        
-        const db = req.app.get('db');
-        db.listing_user_join(req.params.id).then(listing => {
-            console.log('listing', listing)
-            res.status(200).json({listing});
-            
-        })
-
-    }
 
 
 };
